@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="12" viewBox="0 0 16 12">
+  <defs>
+    <clipPath id="clip-liste-ein-ausklappen-icon">
+      <rect width="16" height="12"/>
+    </clipPath>
+  </defs>
+  <g id="liste-ein-ausklappen-icon" clip-path="url(#clip-liste-ein-ausklappen-icon)">
+    <path id="Pfad_68843" data-name="Pfad 68843" d="M0,0,6,6l6-6" transform="translate(2 3)" fill="none" stroke="#1e9ae2" stroke-width="1.5"/>
+  </g>
+</svg>
