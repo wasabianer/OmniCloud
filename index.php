@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li style="float:right"><a class="active" href="#about">Login</a></li>
+                <li style="float:right"><a class="active" href="./Login/register.php">Registrieren</a></li>
             </ul>
     </header>
 

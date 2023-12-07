@@ -49,9 +49,14 @@
                         echo "<p style='color:red;'>Benutzer mit demselben Namen und Nachnamen existiert bereits!</p>";
                     } else {
                         file_put_contents($dateiname, $vname . ";" . $nname . ";" . $benutzerID . "\n", FILE_APPEND);
-                        echo "<p style='color:green;'>Sie haben sich erfolgreich registriert!<br>Ihre Benutzer-ID lautet: $benutzerID</p>";
+                        echo "<p style='color:green;'>Sie haben sich erfolgreich registriert!
+                        <br>
+                        Ihre Benutzer-ID lautet: $benutzerID
+                        <br>
+                        Hier gelangen Sie zur Homepage: <a href='../index.php'>Home</a></p>";
                     }
                 } else {
+                    
                     $benutzerDatei = fopen($dateiname, "w") or die("Unable to open file!");
                     if (userExists($vname, $nname, $dateiname)) {
                         echo "<p style='color:red;'>Benutzer mit demselben Namen und Nachnamen existiert bereits!</p>";
