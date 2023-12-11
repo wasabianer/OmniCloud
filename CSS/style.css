@@ -8,6 +8,51 @@ body {
     padding: 0;
 }
 
+/* Registration Form */
+
+#div-register {
+
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#form-register {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+
+#form-register label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#form-register input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#form-registetr input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+#form-register input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
 /* Footer */
 footer {
     background-color: #fff; /* Hintergrundfarbe des Footers */
