@@ -35,6 +35,7 @@ function userExists($vname, $nname, $dateiname)
     </nav>
 
     <div id="div-register">
+        <p>Bitte geben Sie Ihre Informationen an, um eine Benutzer-ID zu erhalten.</p>
         <form id="form-register" action=register.php method=post>
             <label for="vname">Vorname:</label>
             <input type="text" name="vname" id="vname" required>
@@ -57,11 +58,12 @@ function userExists($vname, $nname, $dateiname)
                     echo "<p style='color:red;'>Benutzer mit demselben Namen und Nachnamen existiert bereits!</p>";
                 } else {
                     file_put_contents($dateiname, $vname . ";" . $nname . ";" . $benutzerID . "\n", FILE_APPEND);
-                    echo "<p style='color:green;'>Sie haben sich erfolgreich registriert!
+                    echo "<p style='color:#4caf50;'>Sie haben sich erfolgreich registriert!
                             <br>
-                            Ihre Benutzer-ID lautet: $benutzerID
+                            Ihre Benutzer-ID lautet: <b>$benutzerID</b>
                             <br>
-                            Hier gelangen Sie zur Homepage: <a href='../index.php'>Home</a></p>";
+                            <br>
+                            Hier gelangen Sie zur Homepage: <a style='text-decoration:none;' href='../index.php'>Home</a></p>";
                 }
             } else {
 
@@ -70,11 +72,12 @@ function userExists($vname, $nname, $dateiname)
                     echo "<p style='color:red;'>Benutzer mit demselben Namen und Nachnamen existiert bereits!</p>";
                 } else {
                     file_put_contents($dateiname, $vname . ";" . $nname . ";" . $benutzerID . "\n", FILE_APPEND);
-                    echo "<p style='color:green;'>Sie haben sich erfolgreich registriert!
+                    echo "<p style='color:#4caf50;'>Sie haben sich erfolgreich registriert!
                             <br>
-                            Ihre Benutzer-ID lautet: $benutzerID
+                            Ihre Benutzer-ID lautet: <b>$benutzerID</b>
                             <br>
-                            Hier gelangen Sie zur Homepage: <a href='../index.php'>Home</a></p>";
+                            <br>
+                            Hier gelangen Sie zur Homepage: <a style='text-declaration:none;' href='../index.php'>Home</a></p>";
                 }
             }
         }
