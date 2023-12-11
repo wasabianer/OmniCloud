@@ -35,14 +35,13 @@
     <form id="main_form" action="Formular\test.php" method=post>
         <!-- <form action="Formular\formular.php" method=post>-->
 
-        <fieldset>
+        <fieldset id="Kunden">
 
             <label for="k_id">Geben Sie ihre Kunden ID ein:</label><br>
             <input type="text" name="k_id" id="k_id" placeholder="123456" required><br>
 
         </fieldset>
-        <fieldset>
-            <legend>Angaben zum Server ausfüllen</legend>
+        <fieldset class="spez">
             <label for="cpu">Bitte Cpuanzahl auswählen:</label> <br>
             <select name="cpu" id="cpu">
                 <option value="1">1 (5 CHF)</option>
@@ -52,7 +51,7 @@
                 <option value="16">16 (45 CHF)</option>
             </select>
         </fieldset>
-        <fieldset>
+        <fieldset class="spez">
             <label for="ram">Bitte Arbeitsspeicher auswählen:</label> <br>
             <select name="ram" id="ram">
                 <option value="512">512 (5 CHF)</option>
@@ -64,7 +63,7 @@
                 <option value="32768">32768 (320)</option>
             </select>
         </fieldset>
-        <fieldset>
+        <fieldset class="spez">
             <label for="ssd">Bitte Speicherplatz(SSD) auswählen:</label> <br>
             <select name="ssd" id="ssd">
                 <option value="10">10 (5 CHF)</option>
@@ -76,7 +75,7 @@
                 <option value="1000">1000 (320)</option>
             </select>
         </fieldset>
-        <fieldset>
+        <fieldset id="sub">
             <input type="submit" name="absenden" value="Send">
         </fieldset>
     </form>
