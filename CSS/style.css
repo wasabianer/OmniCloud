@@ -11,20 +11,19 @@ body {
 /* Registration Form */
 
 #div-register {
-  margin: 0;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex; /* Flexbox verwenden */
+  flex-direction: column; /* In vertikaler Richtung anordnen */
 }
 
 #form-register {
   margin-top: 50px;
+  margin-bottom: 10px;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   width: 300px;
 }
-
 
 #form-register label {
   display: block;
