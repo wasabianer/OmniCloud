@@ -8,16 +8,15 @@
 
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><img src="./Images/Omnicloud-logo.png" alt="OmniCloud Logo"></li>
-                <li><a href="#home">Home</a></li>
-                <li style="float:right"><a class="active" href="./Login/register.php">Login</a></li>
-            </ul>
-        </nav>
-        <h3>Ihr Serverhost des Vertrauens</h3>
-    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home"><img src="./Images/Omnicloud-logo.png" alt="OmniCloud Logo"></a></li>
+            <li><a id="nav-login" href="./Login/register.php">Login</a></li>
+        </ul>
+    </nav>
+    <h3>Ihr Serverhost des Vertrauens</h3>
+
 
 
 

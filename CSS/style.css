@@ -15,7 +15,7 @@ footer {
     position: fixed; /* Fixiere den Footer am unteren Bildschirmrand */
     bottom: 0; /* Abstand vom unteren Rand */
     width: 100%; /* Vollständige Breite des Bildschirms */
-     border-top: 1px solid #ccc; /* Füge einen grauen dünnen Rand oben hinzu */
+    border-top: 1px solid #ccc; /* Füge einen grauen dünnen Rand oben hinzu */
 }
 
 .footer-content p {
@@ -25,37 +25,37 @@ footer {
     text-align: center; /* Zentriere den Inhalt im Footer */
 }
 
-nav img {
-    height: 50px; /* Passe die Höhe nach Bedarf an */
-    width: auto; /* Lässt die Breite automatisch anhand der Höhe skalieren */
-    display: block; /* Sorgt dafür, dass es als Blockelement behandelt wird */
-    margin-top: 5px; /* Füge einen oberen Rand für den Abstand hinzu */
+/* Navigation Bar */
+nav {
+    background-color: #fff;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc; 
 }
 
-ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #fff;
+    display: flex;
+    align-items: center; /* Vertical centering */
+    justify-content: space-between;
 }
 
-li {
-    float: left;
-}
-
-li a {
+nav img {
     display: block;
-    color: #111;
+    height: 50px; /* Adjust the height as needed */
+}
+
+nav a {
+    display: block;
+    color: #111;;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-/*
-li a:hover:not(.active) {
-    background-color: #111;
-}
 
-.active {
-    background-color: #04AA6D;
-}*/
+#nav-login {
+  background-color: #1786CE;
+  order: -1; /* Move the login link to the left */
+}
