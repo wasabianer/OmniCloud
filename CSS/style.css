@@ -111,6 +111,11 @@ footer {
 }
 
 /* Spez */
+
+#main_form{
+  min-height:671px;
+  padding-top:80px;
+ }
 form .spez{
  float:left;
  position:relative;
@@ -120,6 +125,7 @@ form .spez{
  padding-right:0px;
  padding-left:0px;
  width:240px;
+ height:300px;
  margin-left:1% !important;
  margin-right:1px;
  margin-top:10px;
@@ -129,16 +135,33 @@ form .spez{
  border-bottom-left-radius:10px;
  border-bottom-right-radius:10px;
  font-size:13px;
- border-color:#000000;
+ border-style:none;
+ box-shadow:0px 0px 5px 0px #3c4650;
  background-color:rgba(0,0,0,0);
 }
+/* Division */
+#main_form div{
+  text-align:center;
+  font-size:20px;
+  font-weight:700;
+ }
+/* Paragraph */
+#main_form div p{
+  font-size:25px;
+}
+/* Label */
+#main_form .spez label{
+  font-size:20px;
+  font-weight:700;
+ }
 
 /* Sub */
 #sub{
+ padding: 0px;
  float:none;
  position:relative;
- bottom:-99px;
- left:-164px;
+ top: 370px;
+ left:-140px;
  width:12em;
  text-align:center;
  border-style:none;
@@ -146,8 +169,12 @@ form .spez{
 
 /* Kunden */
 #Kunden{
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: 0px 0px 5px 0px #3c4650;
  padding-left:0px;
  width:45em;
+ font-weight:700;
  overflow:visible;
  direction:ltr;
  text-align:center;
@@ -156,7 +183,34 @@ form .spez{
  float:none;
  display:block;
  margin-left:25% !important;
+ margin-bottom:40px;
+ height:50px;
 }
+/* Input */
+#k_id{
+  transform:translatex(0px) translatey(0px);
+  height:30px;
+  width:300px;
+  text-align:center;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  border-style:none;
+  border-width:1px;
+  box-shadow:0px 0px 2px 0px #3c4650;
+ }
+/* Sel */
+.sel{
+  height:30px;
+  width:200px;
+  position:relative;
+  top:10px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+ }
 
 /* Form Division */
 form{
