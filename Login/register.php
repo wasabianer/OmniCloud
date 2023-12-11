@@ -30,7 +30,7 @@ function userExists($vname, $nname, $dateiname)
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a id="nav-login" href="#login">Login</a></li>
+            <li><a id="nav-login" href="./register.php">Login</a></li>
         </ul>
     </nav>
 

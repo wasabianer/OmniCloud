@@ -10,7 +10,7 @@
 
     <nav class="navbar">
         <ul>
-            <li><a href="#"><img src="./Images/Omnicloud-logo.png" alt="Home"></a></li>
+            <li><a href="./index.php"><img src="./Images/Omnicloud-logo.png" alt="Home"></a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
