@@ -1,18 +1,18 @@
 <?php
-function userExists($vname, $nname, $dateiname)
-{
-    if (file_exists($dateiname)) {
-        $fileContents = file_get_contents($dateiname);
-        $users = explode("\n", $fileContents);
-        foreach ($users as $user) {
-            $userData = explode(";", $user);
-            if (count($userData) >= 2 && $userData[0] == $vname && $userData[1] == $nname) {
-                return true;
+    function userExists($vname, $nname, $dateiname)
+    {
+        if (file_exists($dateiname)) {
+            $fileContents = file_get_contents($dateiname);
+            $users = explode("\n", $fileContents);
+            foreach ($users as $user) {
+                $userData = explode(";", $user);
+                if (count($userData) >= 2 && $userData[0] == $vname && $userData[1] == $nname) {
+                    return true;
+                }
             }
         }
+        return false;
     }
-    return false;
-}
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ function userExists($vname, $nname, $dateiname)
         if (isset($_POST["vname"]) && isset($_POST["nname"])) {
             $vname = $_POST["vname"];
             $nname = $_POST["nname"];
-            $dateiname = "benuter.txt";
+            $dateiname = "../Log/user/benuter.txt";
             $benutzerID = rand(99, 1000);
 
             if (file_exists($dateiname)) {
