@@ -11,19 +11,17 @@ body {
 /* Registration Form */
 
 #div-register {
-
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 #form-register {
+  margin-top: 50px;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
   width: 300px;
 }
 
@@ -43,14 +41,8 @@ body {
   border-radius: 4px;
 }
 
-#form-registetr input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-}
-
 #form-register input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #1786CE;
 }
 
 /* Footer */
