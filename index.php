@@ -17,6 +17,7 @@
                 <li><a href="#home">Home</a></li>
                 <li style="float:right"><a class="active" href="./Login/register.php">Login</a></li>
             </ul>
+        </nav>
     </header>
 
 
