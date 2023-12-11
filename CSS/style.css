@@ -1,5 +1,6 @@
 * {
   font-family: 'Open Sans', sans-serif;
+  color: #3C4650;
 }
 
 body {
@@ -16,46 +17,58 @@ footer {
     bottom: 0; /* Abstand vom unteren Rand */
     width: 100%; /* Vollständige Breite des Bildschirms */
     border-top: 1px solid #ccc; /* Füge einen grauen dünnen Rand oben hinzu */
-}
+  }
 
 .footer-content p {
-    color: #3C4650;
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: center; /* Zentriere den Inhalt im Footer */
 }
 
 /* Navigation Bar */
-nav {
-    background-color: #fff;
-    overflow: hidden;
-    border-bottom: 1px solid #ccc; 
+
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav ul {
-    list-style-type: none;
+.navbar ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     display: flex;
-    align-items: center; /* Vertical centering */
-    justify-content: space-between;
+    align-items: center; /* Hier wird die vertikale Ausrichtung zentriert */
+    justify-content: space-between; /* Neu: Elemente gleichmäßig verteilen */
+  }
+
+.navbar li {
+    margin: 0;
 }
 
-nav img {
+.navbar a {
     display: block;
-    height: 50px; /* Adjust the height as needed */
-}
-
-nav a {
-    display: block;
-    color: #111;;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 5px 20px;
     text-decoration: none;
+
+}
+
+.navbar img {
+  padding: 0;
+  height: 30px;
+}
+
+.navbar a:hover {
+    color: #1786CE;
 }
 
 #nav-login {
-  background-color: #1786CE;
-  order: -1; /* Move the login link to the left */
+      color: #1786CE;
+}
+
+#nav-login:hover {
+      color: #0e598b;
+}
+
+.navbar li:last-child {
+    margin-left: auto;
 }
