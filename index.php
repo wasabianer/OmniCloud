@@ -33,9 +33,12 @@
             <input type="text" name="k_id" id="k_id" placeholder="123456" required><br>
 
         </fieldset>
+        <div>
+            <p>Test</p>
+        </div>
         <fieldset class="spez">
             <label for="cpu">Bitte Cpuanzahl auswählen:</label> <br>
-            <select name="cpu" id="cpu">
+            <select name="cpu" id="cpu" class="sel">
                 <option value="1">1 (5 CHF)</option>
                 <option value="2">2 (10 CHF)</option>
                 <option value="4">4 (18 CHF)</option>
@@ -45,7 +48,7 @@
         </fieldset>
         <fieldset class="spez">
             <label for="ram">Bitte Arbeitsspeicher auswählen:</label> <br>
-            <select name="ram" id="ram">
+            <select name="ram" id="ram" class="sel">
                 <option value="512">512 (5 CHF)</option>
                 <option value="1024">1024 (10 CHF)</option>
                 <option value="2048">2048 (20 CHF)</option>
@@ -57,7 +60,7 @@
         </fieldset>
         <fieldset class="spez">
             <label for="ssd">Bitte Speicherplatz(SSD) auswählen:</label> <br>
-            <select name="ssd" id="ssd">
+            <select name="ssd" id="ssd" class="sel">
                 <option value="10">10 (5 CHF)</option>
                 <option value="20">20 (10 CHF)</option>
                 <option value="40">40 (20 CHF)</option>
