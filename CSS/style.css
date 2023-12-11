@@ -1,9 +1,36 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #fff; /* Hintergrundfarbe des Footers */
+    color: #fff; /* Textfarbe im Footer */
+    padding: 10px; /* Innenabstand des Footers */
+    position: fixed; /* Fixiere den Footer am unteren Bildschirmrand */
+    bottom: 0; /* Abstand vom unteren Rand */
+    width: 100%; /* Vollständige Breite des Bildschirms */
+     border-top: 1px solid #ccc; /* Füge einen grauen dünnen Rand oben hinzu */
+}
+
+.footer-content p {
+    color: #3C4650;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center; /* Zentriere den Inhalt im Footer */
+}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #fff;
   }
   
   li {
@@ -12,7 +39,7 @@ ul {
   
   li a {
     display: block;
-    color: white;
+    color: #111;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
