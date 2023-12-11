@@ -7,7 +7,6 @@ $ssd = 2000;
 $k_id = 6666;
 */
 $oldprice = 0;
-$i_id = "small";
 
 //Variabeln
 $cpu = $_POST["cpu"];
@@ -19,14 +18,12 @@ $absenden = $_POST["absenden"];
 //Paths
 $filepath = "..\Log\server\server_cs.txt";
 $fail_path = "..\Log\server_fail.txt";
-$user_path = "..\Log\user\ " . $k_id . ".txt";
+$user_path = "..\Log\user\user_".$k_id .".txt";
 $userlogpath = "..\Log\user_changes\user_log.txt";
 
 
 //Funktionen
-
-function getPrice($cpu, $ram, $ssd)
-{
+function getPrice($cpu, $ram, $ssd){
     //preis berechnen
     switch ($cpu) {
         case 1:
@@ -96,20 +93,27 @@ function getPrice($cpu, $ram, $ssd)
     return $price;
 }
 
-
+function choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1){
+    if ($cpu <= $small_get1[1] && $ram <= $small_get1[2]  && $ssd <= $small_get1[3]) {
+        $s_id = 1;
+        return $s_id;
+    } elseif ($cpu <= $medium_get1[1] && $ram <= $medium_get1[2] && $ssd <= $medium_get1[3]) {
+        $s_id = 2;
+        return $s_id;
+    } elseif ($cpu <= $big_get1[1] && $ram <= $big_get1[2] && $ssd <= $big_get1[3]) {
+        $s_id = 3;
+        return $s_id;
+    } else {
+        echo "Momentan haben wir keinen Platz für ihre Konfiguratin" . "<br>";
+    }
+}
 
 //überprüfung der eingabe Serverseitig
-
-
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["k_id"]) && isset($_POST["absenden"]) && !empty(trim(is_numeric($_POST["k_id"])))) {
 
 
-
-
-
-    // das File server_cs.txt lesen
+// das File server_cs.txt lesen
 // Prüft ob er zugriff auf die Daten hat da uhne diese nicht berechnet werden kann
     if (file_exists($filepath)) {
 
@@ -126,14 +130,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["k_id"]) && isset($_POS
         $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1], "ram" => $medium_get1[2], "ssd" => $medium_get1[3], );
         $big = array("server" => $big_get1[0], "cpu" => $big_get1[1], "ram" => $big_get1[2], "ssd" => $big_get1[3], );
 
-        //Funktuionen add and take da server array required
+        //Code um alle leerzeichen zu löschen
 
+       $user_path = "..\Log\user\user_".$k_id.".txt";
+
+        if(file_exists($user_path)) {
+           $old_get = file_get_contents($user_path);
+            $old_extract = explode(";", $old_get);
+            if ($old_extract[6] == "changed") {
+
+               
+               
+            }
+
+        }else{
+            
+          
+          $s_id = 3;
+
+        }
 
         //create one file per user
         $price = getPrice($cpu, $ram, $ssd);
         if (file_exists($user_path)) {
+            $s_id = $old_extract[1];
             $newprice = $oldprice + $price;
-            file_put_contents($user_path, $k_id . ";" . $s_id . ";" . $cpu . ";" . $ram . ";" . $ssd . ";" . $newprice . ";" . "changed" . ";");
+           file_put_contents($user_path, $k_id . ";" . $s_id . ";" . $cpu . ";" . $ram . ";" . $ssd . ";" . $newprice . ";" . "changed" . ";");
             // user log überschreibung der alten daten 
             $changed = true;
         } else {
@@ -142,53 +164,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["k_id"]) && isset($_POS
             $changed = false;
         }
 
-
-        if (file_exists($user_path)) {
-
-            $old_get = file_get_contents($user_path);
-            $old_extract = explode(";", $old_get);
-            if ($old_extract[5] == "changed") {
-
-                $old_cpu = $old_extract[1];
-                $old_ram = $old_extract[2];
-                $old_ssd = $old_extract[3];
-
-                $cpu_diff = $cpu - $old_cpu;
-                $ram_diff = $ram - $old_ram;
-                $ssd_diff = $ssd - $old_ssd;
-
-
-                // change the server arrays
-
-
-
-                //Print out for testing
-                print_r($small_changed);
-                print_r($medium_changed);
-                print_r($big_changed);
-
-
-
-
-            }
-
-
-        }
-
-
-
-
         //log file schreiben
+        //die Variable $changed wird oben definiert und mit einem Tärnär Operator wird entschieden ob die Datei schon mal existiert hat oder nicht
         $userlog = "USER: " . $k_id . " CPU: " . $cpu . " RAM: " . $ram . " SSD: " . $ssd . " TIME: " . date("Y-m-d H:i:s") . " Changed: " . ($changed ? "True" : "False") . "\n";
         file_put_contents($userlogpath, $userlog, FILE_APPEND);
+
+        echo "Somit haben sie erfolgreich einen Server gemietet" . "<br>";
+        echo "dieser läuft unter der Kunden Nummer " . $k_id . "<br>";
 
     } else {
         echo "<br>" . "Kein Zugriff auf die Server Daten" . "<br>";
     }
-    ;
+    
 
-    echo "somit haben sie erfolgreich einen Server gemietet" . "<br>";
-    echo "dieser läuft unter der Kunden Nummer " . $k_id . "<br>";
 
 } else {
     // Fail Log
