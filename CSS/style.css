@@ -25,30 +25,37 @@ footer {
     text-align: center; /* Zentriere den Inhalt im Footer */
 }
 
+nav img {
+    height: 50px; /* Passe die Höhe nach Bedarf an */
+    width: auto; /* Lässt die Breite automatisch anhand der Höhe skalieren */
+    display: block; /* Sorgt dafür, dass es als Blockelement behandelt wird */
+    margin-top: 5px; /* Füge einen oberen Rand für den Abstand hinzu */
+}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #fff;
-  }
-  
-  li {
+}
+
+li {
     float: left;
-  }
-  
-  li a {
+}
+
+li a {
     display: block;
     color: #111;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
-  
-  li a:hover:not(.active) {
+}
+/*
+li a:hover:not(.active) {
     background-color: #111;
-  }
-  
-  .active {
+}
+
+.active {
     background-color: #04AA6D;
-  }
+}*/

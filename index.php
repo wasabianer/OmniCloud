@@ -9,16 +9,17 @@
 <body>
 
     <header>
-        <h1>OmniCloud</h1>
-        <h3>Ihr Serverhost des Vertrauens</h3>
-
         <nav>
             <ul>
+                <li><img src="./Images/Omnicloud-logo.png" alt="OmniCloud Logo"></li>
                 <li><a href="#home">Home</a></li>
                 <li style="float:right"><a class="active" href="./Login/register.php">Login</a></li>
             </ul>
         </nav>
+        <h3>Ihr Serverhost des Vertrauens</h3>
     </header>
+
+
 
 
 
