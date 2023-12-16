@@ -1,12 +1,4 @@
 <?php
-/*
-//Test Variabeln
-$cpu = 6;
-$ram = 32768;
-$ssd = 2000;
-$k_id = 6666;
-*/
-
 
 //Variabeln
 $cpu = $_POST["cpu"];
@@ -18,11 +10,28 @@ $absenden = $_POST["absenden"];
 //Paths
 $filepath = "..\Log\server\server_cs.txt";
 $fail_path = "..\Log\server_fail.txt";
-$user_path = "..\Log\user\user_".$k_id .".txt";
+$user_path = "..\Log\user\user_" . $k_id . ".txt";
 $userlogpath = "..\Log\user_changes\user_log.txt";
 
+//File
+if(file_exists($user_path)){
+    $old_get = file_get_contents($user_path);
+    $old_extract = explode(";", $old_get);
+}
+
 //Funktionen
-function getPrice($cpu, $ram, $ssd){
+
+//Debuging 
+function printArray($small, $medium, $big){
+    echo print_r($small);
+    echo"<br>";
+    print_r($medium);
+    echo"<br>";
+    print_r($big);
+    echo"<br>";
+}
+function getPrice($cpu, $ram, $ssd)
+{
     //preis berechnen
     switch ($cpu) {
         case 1:
@@ -91,9 +100,9 @@ function getPrice($cpu, $ram, $ssd){
     $price = $cpu_price + $ram_price + $ssd_price;
     return $price;
 }
-
-function choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1){
-    if ($cpu <= $small_get1[1] && $ram <= $small_get1[2]  && $ssd <= $small_get1[3]) {
+function choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1)
+{
+    if ($cpu <= $small_get1[1] && $ram <= $small_get1[2] && $ssd <= $small_get1[3]) {
         $s_id = 1;
         return $s_id;
     } elseif ($cpu <= $medium_get1[1] && $ram <= $medium_get1[2] && $ssd <= $medium_get1[3]) {
@@ -103,98 +112,119 @@ function choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1){
         $s_id = 3;
         return $s_id;
     } else {
-        echo "Momentan haben wir keinen Platz für ihre Konfiguratin" . "<br>";
+        echo "Momentan haben wir keinen Platz für ihre Konfiguration" . "<br>";
+    }
+}
+function updateServera ($cpu, $ram, $ssd ,$user_path, $small , $medium , $big , $small_get1, $medium_get1, $big_get1,$s_id, $filepath){
+    if (!file_exists($user_path)) {
+        echo "Neu" . "<br>";
+        $s_id = choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1);
+        switch ($s_id) {
+            case 1:
+                $small = array("server" => $small_get1[0], "cpu" => $small_get1[1] - $cpu, "ram" => $small_get1[2] - $ram, "ssd" => $small_get1[3] - $ssd, );
+                break;
+            case 2:
+                $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1] - $cpu, "ram" => $medium_get1[2] - $ram, "ssd" => $medium_get1[3] - $ssd, );
+                break;
+            case 3:
+                $big = array("server" => $big_get1[0], "cpu" => $big_get1[1] - $cpu, "ram" => $big_get1[2] - $ram, "ssd" => $big_get1[3] - $ssd, );
+                break;
+        }
+
+        file_put_contents($filepath, $small["server"] . ";" . $small["cpu"] . ";" . $small["ram"] . ";" . $small["ssd"] . "||" . $medium["server"] . ";" . $medium["cpu"] . ";" . $medium["ram"] . ";" . $medium["ssd"] . "||" . $big["server"] . ";" . $big["cpu"] . ";" . $big["ram"] . ";" . $big["ssd"] . ";");
+
+    }
+}
+function updateServerb($cpu, $ram, $ssd ,$user_path, $small , $medium , $big , $small_get1, $medium_get1, $big_get1, $s_id,$filepath){
+    $old_get = file_get_contents($user_path);
+    $old_extract = explode(";", $old_get);
+    
+    if ($old_extract[1] == $s_id) {
+        $newcpu = $cpu - $old_extract[2];
+        $newram = $ram - $old_extract[3];
+        $newssd = $ssd - $old_extract[4];
+
+        echo "gleich" . "<br>";
+        switch ($old_extract[1]) {
+            case 1:
+                $small = array("server" => $small_get1[0], "cpu" => $small_get1[1] + $newcpu, "ram" => $small_get1[2] + $newram, "ssd" => $small_get1[3] + $newssd, );
+                break;
+            case 2:
+                $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1] + $newcpu, "ram" => $medium_get1[2] + $newram, "ssd" => $medium_get1[3] + $newssd, );
+                break;
+            case 3:
+                $big = array("server" => $big_get1[0], "cpu" => $big_get1[1] + $newcpu, "ram" => $big_get1[2] + $newram, "ssd" => $big_get1[3] + $newssd, );
+                break;
+        }
+
+        file_put_contents($filepath, $small["server"] . ";" . $small["cpu"] . ";" . $small["ram"] . ";" . $small["ssd"] . "||" . $medium["server"] . ";" . $medium["cpu"] . ";" . $medium["ram"] . ";" . $medium["ssd"] . "||" . $big["server"] . ";" . $big["cpu"] . ";" . $big["ram"] . ";" . $big["ssd"] . ";");
+
+
     }
 }
 
-function UpdateServer($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1, $s_id, $old_extract){
-    
-    
+function updateServerc($cpu, $ram, $ssd ,$user_path, $small , $medium , $big , $small_get1, $medium_get1, $big_get1, $old_extract, $s_id, $filepath){
+   
+    $old_get = file_get_contents($user_path);
+    $old_extract = explode(";", $old_get);
+   
+    echo "neu verteilen" . "<br>";
+    $old = $old_extract[1];
+    echo $old."<br>";
 
-    //Update Server
-    $s_id_old = $old_extract[1];
-    $cpu_old = $old_extract[2];
-    $ram_old = $old_extract[3];
-    $ssd_old = $old_extract[4];
-    $old_price = $old_extract[5];
-    $check = $old_extract[6];
-    $s_id = choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1);
-    $newcpu = $cpu_old - $cpu;
-    $newram = $ram_old - $ram;
-    $newssd = $ssd_old - $ssd;
-    //Solange der alte Server nicht ersetzt werden muss kann der alte Server weiter verwendet werden.
-    if($check == "-"){ 
-        echo "neu". "<br>";
-        switch ($s_id) {
-            case 1:
-                $small_get1[1] = $small_get1[1] - $cpu;
-                $small_get1[2] = $small_get1[2] - $ram;
-                $small_get1[3] = $small_get1[3] - $ssd;
-                break;
-            case 2:
-                $medium_get1[1] = $medium_get1[1] - $cpu;
-                $medium_get1[2] = $medium_get1[2] - $ram;
-                $medium_get1[3] = $medium_get1[3] - $ssd;
-                break;
-            case 3:
-                $big_get1[1] = $big_get1[1] - $cpu;
-                $big_get1[2] = $big_get1[2] - $ram;
-                $big_get1[3] = $big_get1[3] - $ssd;
-                break;
-        }
-        echo print_r($small_get1) . "<br>";   
-        echo print_r($medium_get1). "<br>"; 
-        echo print_r($big_get1). "<br>";
-    
-    }
-    else if($check = "changed"){
-        if ($s_id_old == $s_id){
-            echo "gleich". "<br>";
-            switch ($s_id_old) {
-                case 1:
-                    $small_get1[1] = $small_get1[1] + $newcpu;
-                    $small_get1[2] = $small_get1[2] + $newram;
-                    $small_get1[3] = $small_get1[3] + $newssd;
-                    break;
-                case 2:
-                    $medium_get1[1] = $medium_get1[1] + $newcpu;
-                    $medium_get1[2] = $medium_get1[2] + $newram;
-                    $medium_get1[3] = $medium_get1[3] + $newssd;
-                    break;
-                case 3:
-                    $big_get1[1] = $big_get1[1] + $newcpu;
-                    $big_get1[2] = $big_get1[2] + $newram;
-                    $big_get1[3] = $big_get1[3] + $newssd;
-                    break;
-            }
-        echo print_r($small_get1) . "<br>";   
-        echo print_r($medium_get1). "<br>"; 
-        echo print_r($big_get1). "<br>"; 
-    }else {
-//  Swicht zwischen verschiedenen Servern
-        echo"fehler";
+    if ($old == 1 && $s_id == 2) {
+        // Resourcen freigeben
+        $small = array("server" => $small_get1[0], "cpu" => $small_get1[1] + $old_extract[3], "ram" => $small_get1[2] + $old_extract[4], "ssd" => $small_get1[3] + $old_extract[5], );
+        // Resourcen belegen
+        $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1] - $cpu, "ram" => $medium_get1[2] - $ram, "ssd" => $medium_get1[3] - $ssd, );
+
+    } else if ($old == 1 && $s_id == 3) {
+        // Resourcen freigeben
+        $small = array("server" => $small_get1[0], "cpu" => $small_get1[1] + $old_extract[3], "ram" => $small_get1[2] + $old_extract[4], "ssd" => $small_get1[3] + $old_extract[5], );
+        // Resourcen belegen
+        $big = array("server" => $big_get1[0], "cpu" => $big_get1[1] + $cpu, "ram" => $big_get1[2] + $ram, "ssd" => $big_get1[3] + $ssd, );
+
+    } else if ($old == 2 && $s_id == 1) {
+        // Resourcen freigeben
+        $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1] + $old_extract[3], "ram" => $medium_get1[2] + $old_extract[4], "ssd" => $medium_get1[3] + $old_extract[5], );
+        // Resourcen belegen
+        $small = array("server" => $small_get1[0], "cpu" => $small_get1[1] - $cpu, "ram" => $small_get1[2] - $ram, "ssd" => $small_get1[3] - $ssd, );
+
+    } else if ($old == 2 && $s_id == 3) {
+        // Resourcen freigeben
+        $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1] + $old_extract[3], "ram" => $medium_get1[2] + $old_extract[4], "ssd" => $medium_get1[3] + $old_extract[5], );
+        //Resourcen belegen
+        $big = array("server" => $big_get1[0], "cpu" => $big_get1[1] - $cpu, "ram" => $big_get1[2] - $ram, "ssd" => $big_get1[3] - $ssd, );
+
+    } else if ($old == 3 && $s_id == 2) {
+        // Resourcen freigeben
+        $big = array("server" => $big_get1[0], "cpu" => $big_get1[1] + $old_extract[3], "ram" => $big_get1[2] + $old_extract[4], "ssd" => $big_get1[3] + $old_extract[5], );
+        //Resourcen belegen
+        $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1] - $cpu, "ram" => $medium_get1[2] - $ram, "ssd" => $medium_get1[3] - $ssd, );
+
+
+    } else if ($old == 3 && $s_id == 1) {
+        // Resourcen freigeben
+        $big = array("server" => $big_get1[0], "cpu" => $big_get1[1] + $old_extract[3], "ram" => $big_get1[2] + $old_extract[4], "ssd" => $big_get1[3] + $old_extract[5], );
+        //Resourcen belegen
+        $small = array("server" => $small_get1[0], "cpu" => $small_get1[1] - $cpu, "ram" => $small_get1[2] - $ram, "ssd" => $small_get1[3] - $ssd, );
 
     }
-    
-
-    }else{
-    echo "<br>". "Test Fail". "<br>";
-    }
-
-    }
-    
+    file_put_contents($filepath, $small["server"] . ";" . $small["cpu"] . ";" . $small["ram"] . ";" . $small["ssd"] . "||" . $medium["server"] . ";" . $medium["cpu"] . ";" . $medium["ram"] . ";" . $medium["ssd"] . "||" . $big["server"] . ";" . $big["cpu"] . ";" . $big["ram"] . ";" . $big["ssd"] . ";");
+    print_r($small);
+    print_r($medium);
+    print_r($big);
+}
 
 
-
-
-
+//Funktion um die Recurcen zu berechnen und von den Servern abzuziehen
 
 //überprüfung der eingabe Serverseitig
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["k_id"]) && isset($_POST["absenden"]) && !empty(trim(is_numeric($_POST["k_id"])))) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["absenden"]) && !empty(trim(is_numeric($_POST["k_id"]))) && !empty(trim(is_numeric($_POST["cpu"]))) && !empty(trim(is_numeric($_POST["ssd"]))) && !empty(trim(is_numeric($_POST["ram"])))) {
 
 
-// das File server_cs.txt lesen
+    // das File server_cs.txt lesen
 // Prüft ob er zugriff auf die Daten hat da uhne diese nicht berechnet werden kann
     if (file_exists($filepath)) {
 
@@ -210,55 +240,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["k_id"]) && isset($_POS
         $small = array("server" => $small_get1[0], "cpu" => $small_get1[1], "ram" => $small_get1[2], "ssd" => $small_get1[3], );
         $medium = array("server" => $medium_get1[0], "cpu" => $medium_get1[1], "ram" => $medium_get1[2], "ssd" => $medium_get1[3], );
         $big = array("server" => $big_get1[0], "cpu" => $big_get1[1], "ram" => $big_get1[2], "ssd" => $big_get1[3], );
+        echo "first";
+        echo"<br>";
+        printArray($small, $medium, $big);
+        echo "second";
+        echo"<br>";
+        //abzug
 
-        //Code um alle leerzeichen zu löschen
+        //beim Neuerstellen einer VM
 
-        if(file_exists($user_path)) {
-           
-            $old_get = file_get_contents($user_path);
-            $old_extract = explode(";", $old_get);
 
-            if ($old_extract[6] == "changed") {
-                $s_id = $old_extract[1];
-                $oldprice = $old_extract[5];
-                //UpdateServer($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1, $s_id, $old_extract);
-
+            //create one file per user
+            $price = getPrice($cpu, $ram, $ssd);
+            if (file_exists($user_path)) {
+                $s_id = choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1);
+                if ($s_id == $old_extract[1]){
+                    updateServerb($cpu, $ram, $ssd ,$user_path, $small , $medium , $big , $small_get1, $medium_get1, $big_get1,$s_id, $old_extract, $filepath);
+                }else{
+                    updateServerc($cpu, $ram, $ssd ,$user_path, $small , $medium , $big , $small_get1, $medium_get1, $big_get1,$s_id,$old_extract, $filepath);
+                }
+                file_put_contents($user_path, $k_id . ";" . $s_id . ";" . $cpu . ";" . $ram . ";" . $ssd . ";" . $price . ";" . "changed" . ";");
+                // user log überschreibung der alten daten 
+                $changed = true;
+            } else {
+                echo "neu_2"."<br>";
+                $s_id = choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1);
+                updateServera($cpu, $ram, $ssd ,$user_path, $small , $medium , $big , $small_get1, $medium_get1, $big_get1,$s_id, $filepath);
+                file_put_contents($user_path, $k_id . ";" . $s_id . ";" . $cpu . ";" . $ram . ";" . $ssd . ";" . $price . ";" . "-" . ";");
+                // user log neue Datei
+                $changed = false;
             }
 
-        }else{
-            
-          $s_id = choose_Server($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1);
+            //log file schreiben
+            //die Variable $changed wird oben definiert und mit einem Tärnär Operator wird entschieden ob die Datei schon mal existiert hat oder nicht
+            $userlog = "USER: " . $k_id . " CPU: " . $cpu . " RAM: " . $ram . " SSD: " . $ssd . " TIME: " . date("Y-m-d H:i:s") . " Changed: " . ($changed ? "True" : "False") . "\n";
+            file_put_contents($userlogpath, $userlog, FILE_APPEND);
 
-        }
+            printArray($small, $medium, $big);
+            echo $cpu."<br>";
+            echo $ram."<br>";
+            echo $ssd."<br>";
+            echo "Somit haben sie erfolgreich einen Server gemietet" . "<br>";
+            echo "dieser läuft unter der Kunden Nummer " . $k_id . "<br>";
+            echo "Die Server kosten ihnen pro Monat " . $price . " CHF" . "<br>";
 
-        //Funktion um die Recurcen zu berechnen und von den Servern abzuziehen
-        //UpdateServer($cpu, $ram, $ssd, $small_get1, $medium_get1, $big_get1, $s_id, $user_path);
-
-        //create one file per user
-        $price = getPrice($cpu, $ram, $ssd);
-        if (file_exists($user_path)) {
-            $s_id = $old_extract[1];
-            $oldprice = $old_extract[5];
-            $newprice = $oldprice + $price;
-           file_put_contents($user_path, $k_id . ";" . $s_id . ";" . $cpu . ";" . $ram . ";" . $ssd . ";" . $newprice . ";" . "changed" . ";");
-            // user log überschreibung der alten daten 
-            $changed = true;
-        } else {
-            file_put_contents($user_path, $k_id . ";" . $s_id . ";" . $cpu . ";" . $ram . ";" . $ssd . ";" . $price . ";" . "-" . ";");
-            // user log neue Datei
-            $changed = false;
-        }
-
-        //log file schreiben
-        //die Variable $changed wird oben definiert und mit einem Tärnär Operator wird entschieden ob die Datei schon mal existiert hat oder nicht
-        $userlog = "USER: " . $k_id . " CPU: " . $cpu . " RAM: " . $ram . " SSD: " . $ssd . " TIME: " . date("Y-m-d H:i:s") . " Changed: " . ($changed ? "True" : "False") . "\n";
-        file_put_contents($userlogpath, $userlog, FILE_APPEND);
-
-        echo "Somit haben sie erfolgreich einen Server gemietet" . "<br>";
-        echo "dieser läuft unter der Kunden Nummer " . $k_id . "<br>";
+        
 
     } else {
-        echo "<br>" . "Kein Zugriff auf die Server Daten" . "<br>";
+        echo "Keinen Zugriff auf Serverdaten";
     }
 
 } else {
