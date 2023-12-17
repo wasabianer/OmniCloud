@@ -35,7 +35,7 @@
     </nav>
 
     <div id="div-register">
-        <p>Bitte geben Sie Ihre Informationen an, um eine Benutzer-ID zu erhalten.</p>
+        <p>Bitte geben Sie Ihre persönlichen Informationen an, um eine Benutzer-ID zu erhalten.</p>
         <form id="form-register" action=register.php method=post>
             <label for="vname">Vorname:</label>
             <input type="text" name="vname" id="vname" required>

@@ -1,11 +1,11 @@
 * {
-  font-family: 'Open Sans', sans-serif;
-  color: #3C4650;
+  font-family: "Open Sans", sans-serif;
+  color: #3c4650;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* Registration Form */
@@ -41,52 +41,51 @@ body {
 }
 
 #form-register input[type="submit"]:hover {
-  background-color: #1786CE;
+  background-color: #1786ce;
   color: #fff;
 }
 
 /* Footer */
 footer {
-    background-color: #fff; /* Hintergrundfarbe des Footers */
-    color: #fff; /* Textfarbe im Footer */
-    padding: 10px; /* Innenabstand des Footers */
-    position: fixed; /* Fixiere den Footer am unteren Bildschirmrand */
-    bottom: 0; /* Abstand vom unteren Rand */
-    width: 100%; /* Vollständige Breite des Bildschirms */
-    border-top: 1px solid #ccc; /* Füge einen grauen dünnen Rand oben hinzu */
-  }
+  background-color: #fff; /* Hintergrundfarbe des Footers */
+  color: #fff; /* Textfarbe im Footer */
+  padding: 10px; /* Innenabstand des Footers */
+  position: fixed; /* Fixiere den Footer am unteren Bildschirmrand */
+  bottom: 0; /* Abstand vom unteren Rand */
+  width: 100%; /* Vollständige Breite des Bildschirms */
+  border-top: 1px solid #ccc; /* Füge einen grauen dünnen Rand oben hinzu */
+}
 
 .footer-content p {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    text-align: center; /* Zentriere den Inhalt im Footer */
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center; /* Zentriere den Inhalt im Footer */
 }
 
 /* Navigation Bar */
 
 .navbar {
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center; /* Hier wird die vertikale Ausrichtung zentriert */
-    justify-content: space-between; /* Neu: Elemente gleichmäßig verteilen */
-  }
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center; /* Hier wird die vertikale Ausrichtung zentriert */
+  justify-content: space-between; /* Neu: Elemente gleichmäßig verteilen */
+}
 
 .navbar li {
-    margin: 0;
+  margin: 0;
 }
 
 .navbar a {
-    display: block;
-    padding: 5px 20px;
-    text-decoration: none;
-
+  display: block;
+  padding: 5px 20px;
+  text-decoration: none;
 }
 
 .navbar img {
@@ -95,150 +94,228 @@ footer {
 }
 
 .navbar a:hover {
-    color: #1786CE;
+  color: #1786ce;
 }
 
 #nav-login {
-      color: #1786CE;
+  color: #1786ce;
 }
 
 #nav-login:hover {
-      color: #0e598b;
+  color: #0e598b;
 }
 
 .navbar li:last-child {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 /* Spez */
 
-#main_form{
-  min-height:671px;
-  padding-top:80px;
- }
-form .spez{
- float:left;
- position:relative;
- left:23% !important;
- padding-top:20px;
- padding-bottom:20px;
- padding-right:0px;
- padding-left:0px;
- width:240px;
- height:300px;
- margin-left:1% !important;
- margin-right:1px;
- margin-top:10px;
- text-align:center;
- border-top-left-radius:10px;
- border-top-right-radius:10px;
- border-bottom-left-radius:10px;
- border-bottom-right-radius:10px;
- font-size:13px;
- border-style:none;
- box-shadow:0px 0px 5px 0px #3c4650;
- background-color:rgba(0,0,0,0);
+.main_form {
+  min-height: 671px;
+  padding-top: 80px;
+}
+form .spez {
+  float: left;
+  position: relative;
+  left: 23% !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 0px;
+  padding-left: 0px;
+  width: 240px;
+  height: 300px;
+  margin-left: 1% !important;
+  margin-right: 1px;
+  margin-top: 10px;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-size: 13px;
+  border-style: none;
+  box-shadow: 0px 0px 5px 0px #3c4650;
+  background-color: rgba(0, 0, 0, 0);
 }
 /* Division */
-#main_form div{
-  text-align:center;
-  font-size:20px;
-  font-weight:700;
- }
+.main_form div {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
 /* Paragraph */
-#main_form div p{
-  font-size:25px;
+.main_form div p {
+  font-size: 25px;
 }
 /* Label */
-#main_form .spez label{
-  font-size:20px;
-  font-weight:700;
- }
+.main_form .spez label {
+  font-size: 20px;
+  font-weight: 700;
+}
 
 /* Sub */
-#sub{
- padding: 0px;
- float:none;
- position:relative;
- top: 370px;
- left:-140px;
- width:12em;
- text-align:center;
- border-style:none;
+#sub {
+  padding: 0px;
+  float: none;
+  position: relative;
+  top: 370px;
+  left: -140px;
+  width: 12em;
+  text-align: center;
+  border-style: none;
 }
 
 /* Kunden */
-#Kunden{
+#Kunden {
   border-radius: 10px;
   border-style: none;
   box-shadow: 0px 0px 5px 0px #3c4650;
- padding-left:0px;
- width:45em;
- font-weight:700;
- overflow:visible;
- direction:ltr;
- text-align:center;
- position:relative;
- left:0px;
- float:none;
- display:block;
- margin-left:25% !important;
- margin-bottom:40px;
- height:50px;
+  padding-left: 0px;
+  width: 45em;
+  font-weight: 700;
+  overflow: visible;
+  direction: ltr;
+  text-align: center;
+  position: relative;
+  left: 0px;
+  float: none;
+  display: block;
+  margin-left: 25% !important;
+  margin-bottom: 40px;
+  height: 80px;
 }
 /* Input */
-#k_id{
-  transform:translatex(0px) translatey(0px);
-  height:30px;
-  width:300px;
-  text-align:center;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  border-bottom-left-radius:5px;
-  border-bottom-right-radius:5px;
-  border-style:none;
-  border-width:1px;
-  box-shadow:0px 0px 2px 0px #3c4650;
- }
+#k_id {
+  transform: translatex(0px) translatey(0px);
+  height: 30px;
+  width: 300px;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-style: none;
+  border-width: 1px;
+  box-shadow: 0px 0px 2px 0px #3c4650;
+  margin: 20px;
+}
 /* Sel */
-.sel{
-  height:30px;
-  width:200px;
-  position:relative;
-  top:10px;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  border-bottom-left-radius:5px;
-  border-bottom-right-radius:5px;
- }
+.sel {
+  height: 30px;
+  width: 200px;
+  position: relative;
+  top: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 
 /* Form Division */
-form{
- overflow:visible;
- min-width:0px;
+form {
+  overflow: visible;
+  min-width: 0px;
 }
 
 /* Input */
-#sub input{
- background-size:auto;
- background-blend-mode:normal;
- transform:translatex(0px) translatey(0px);
- transition-duration: 0.4s;
- border-top-left-radius:10px;
- border-top-right-radius:10px;
- border-bottom-left-radius:10px;
- border-bottom-right-radius:10px;
- width:200px;
- height:40px;
- background-color:#87cdde;
- font-family:'Open Sans', sans-serif;
- color:#ffffff;
- font-size:24px;
- font-style:normal;
- font-weight:700;
- border-color:#37abc8;
+#sub input {
+  background-size: auto;
+  background-blend-mode: normal;
+  transform: translatex(0px) translatey(0px);
+  transition-duration: 0.4s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 200px;
+  height: 40px;
+  background-color: #87cdde;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  border-color: #37abc8;
 }
-#sub input:hover{
+#sub input:hover {
   background-color: white;
   color: #87cdde;
 }
+
+/* Division */
+.main_form2 div {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+/* Paragraph */
+.main_form2 div p {
+  font-size: 25px;
+}
+/* Label */
+.main_form2 .spez label {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Kunden */
+#Kunden2 {
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: 0px 0px 5px 0px #3c4650;
+  padding-left: 0px;
+  width: 45em;
+  font-weight: 700;
+  overflow: visible;
+  direction: ltr;
+  text-align: center;
+  position: relative;
+  left: 0px;
+  float: none;
+  display: block;
+  margin-left: 25% !important;
+  margin-bottom: 0px;
+  height: 80px;
+}
+
+#sub2 {
+  border-style: none;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 100px;
+}
+
+/* Input */
+#sub2 input {
+  display: inline-block;
+  margin: 0 auto;
+
+  background-size: auto;
+  background-blend-mode: normal;
+  transform: translatex(0px) translatey(0px);
+  transition-duration: 0.4s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 200px;
+  height: 40px;
+  background-color: #de8787;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  border-color: #dd4949;
+}
+#sub2 input:hover {
+  background-color: white;
+  color: #dd4949;
+}
+
+#home-text {
+  text-align: center;
+  line-height: 20px;
+}
+

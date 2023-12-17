@@ -1,0 +1,25 @@
+* {
+  font-family: "Open Sans", sans-serif;
+  color: #3c4650;
+}
+.container {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px auto; /* Auto-Margin zentriert die Box horizontal */
+  background-color: #f9f9f9;
+  max-width: 400px;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+.container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.container li {
+  margin-bottom: 10px;
+}
