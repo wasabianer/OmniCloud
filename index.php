@@ -31,7 +31,7 @@
 
 
     <br><br>
-    <form class="main_form" action="Formular\test.php" method=post>
+    <form class="main_form" action="Formular\createVM.php" method=post>
         <div>
             <p>Konfigurieren Sie Ihre Virtuelle Maschine:</p>
         </div>
